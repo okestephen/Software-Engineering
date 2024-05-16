@@ -35,7 +35,7 @@
                     <span id="close-form" class="close"></span>
                 <form id="task-form" action="/" method="post">
                     <label for="task-name">Task Name</label>
-                    <input type="text" name="task-name" id="task-name" required>
+                    <input type="text" name="task-name" id="task-name" placeholder="Enter new task" required>
 
                     <label for="course">Course</label>
                     <select name="course" id="select-course" required>
@@ -43,12 +43,14 @@
                     </select>
                     
                     <label for="due-date">Due Date</label>
-                    <input type="date" name="due-date" id="due-date" required>
+                    <input type="date" name="due-date" id="due-date" placeholder="Enter Date" required>
                     
                     <label for="to-do">To-do</label><br>
-                    <textarea name="toDos" id="to-do" placeholder="Enter each item in a new line"></textarea>
+                    <textarea name="toDos" id="to-do" placeholder="Enter new item in a new line"></textarea>
+
                     <label for="note">Description</label>
-                    <input type="text" name="note" class="note" id="note">
+                    <input type="text" name="note" class="note" id="note" placeholder="Description">
+
                     <input type="submit" id="submit-form"></input>
                 </form>
                     

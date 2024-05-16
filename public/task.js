@@ -144,7 +144,7 @@ function displayTaskView(taskData) {
   
 
   taskHeader.innerHTML = `<h1>${taskData["task_name"]}</h1>
-  <h2>${getCourseName(taskData["courseid"])}</h2>
+  <h1>${getCourseName(taskData["courseid"])}</h1>
   <h2 id="countdown">${showcountdown(endingDate)}</h2>
   <img class="delete" src="./images/trash-can.svg" alt="trash-can" height="27" onclick="deleteTask(${taskData["taskid"]}, ${taskData["userid"]})">
   <span id="close-task" class="close"></span>`;
@@ -303,7 +303,7 @@ function updateProgressBar() {
   document.getElementById('progress').style.setProperty('--a', progressDegree + 'deg');
 }
 
-
+// Displays the countdown
 function showcountdown(endingDate) {
   var x = setInterval(function() {
     var todayDate = new Date().getTime();
