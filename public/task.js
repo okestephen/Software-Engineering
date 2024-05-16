@@ -57,6 +57,12 @@ form.addEventListener('submit', function(event) {
     formValues['toDos'] = createTodos();
     console.log(formValues);
 
+    const dueDate = new Date(formValues["due-date"]);
+    if  (dueDate < new Date()) {
+        window.alert("Enter a valid future date for the due date");
+        return;
+    }
+
     const details = JSON.stringify(formValues);
 
     fetch('/tasks', {
@@ -133,9 +139,13 @@ function displayTaskView(taskData) {
   taskContent.appendChild(toDoList);
   taskContent.appendChild(progressContainer);
   taskContent.appendChild(note);
+
+  var endingDate = new Date(taskData["due_date"]).getTime();
+  
+
   taskHeader.innerHTML = `<h1>${taskData["task_name"]}</h1>
   <h2>${getCourseName(taskData["courseid"])}</h2>
-  <h3>${new Date(taskData["due_date"]).toLocaleDateString()}</h3>
+  <h2 id="countdown">${showcountdown(endingDate)}</h2>
   <img class="delete" src="./images/trash-can.svg" alt="trash-can" height="27" onclick="deleteTask(${taskData["taskid"]}, ${taskData["userid"]})">
   <span id="close-task" class="close"></span>`;
 
@@ -292,6 +302,29 @@ function updateProgressBar() {
   // Update the custom property value for the progress angle
   document.getElementById('progress').style.setProperty('--a', progressDegree + 'deg');
 }
+
+
+function showcountdown(endingDate) {
+  var x = setInterval(function() {
+    var todayDate = new Date().getTime();
+    var difference = endingDate - todayDate;
+    var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    var countdownElement = document.getElementById("countdown");
+    if (countdownElement) {
+      countdownElement.innerHTML = days + "d" + " " + hours + "h" + " " + minutes + "m" + " " + seconds + "s";
+      if (difference < 0) {
+        clearInterval(x);
+        countdownElement.innerHTML = "EXPIRED";
+      }
+    } else {
+      clearInterval(x); // Clear interval if countdown element is not found
+    }
+  }, 1000);
+}
+
 // --------------------- /Task Utilities ----------------------- //
 
 document.addEventListener("DOMContentLoaded", function() { 

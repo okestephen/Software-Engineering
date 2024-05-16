@@ -188,6 +188,12 @@ img.delete {
 
 /* ------------------ Work in Progress ------------------*/
 
+.todos label {
+  font-size: .9em;
+  font-weight: bold;
+  line-height: .26;
+}
+
 .modal-content .progress-container{
   grid-area: 2/ 6/ 3/ 10;
   /* background-color: #9b4a4a; */
@@ -276,36 +282,29 @@ position: fixed;
 font-size: 12px;
 }
 
-#task-form .modal-content {
-margin: 30px auto;
-background-color: #fefefe;
-padding: 30px;
-border: 2px solid #9b4a4a;
-border-radius: 20px;
-width: 33%;
+#task-form  {
+  position: relative;
 }
 
-#task-form .modal-header {
-display: flex;
-justify-content: space-between;
-}
-#task-form input[type=text], select,
-input[type=date], textarea {
+#task-form input, select, textarea{
 width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
+border: none;
+border-bottom: 2px solid #9b4a4a;
 border-radius: 4px;
 box-sizing: border-box;
-
-&::placeholder{
-  color: #9b4a4aaa;
-}
+color: black;
 }
 
-#task-form #task-input {
-width: 74%;
+#task-form textarea{
+  border: 2px solid #9b4a4a;
+}
+
+#task-form input:focus, select:focus, textarea:focus{
+  outline-color: #9b4a4a;
 }
 
 #task-form input[type=submit] {
