@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./task.css">
+    <link rel="stylesheet" href="./login.css">
+    <script src="./task.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Progress</a>
+            <a href="#">Course</a>
+            <a href="./task.html">Task Management</a>
+            <a href="./loginindex.html">Login/Sign up</a>
+            <div class="animation start-home"></div>
+          </nav>
+    </header>  
+    <!-- main content -->
+    <main>
+        <hr>
+        <div class="container" id="card-container" loadTasks()>
+            <!-- Task card container -->
+        </div>
+        </main>
+        <!-- New Task button -->
+        <button id="openFormBtn" class="plus button"></button>
+        <div class="modal" id="form-modal">
+            <div class="modal-content">
+                    <h3>Create Task</h3>
+                    <span id="close-form" class="close"></span>
+                <form id="task-form" action="/" method="post">
+                    <label for="task-name">Task Name</label>
+                    <input type="text" name="task-name" id="task-name" required>
+
+                    <label for="course">Course</label>
+                    <select name="course" id="select-course" required>
+                        <option value="" disabled selected>Select Course</option>
+                    </select>
+                    
+                    <label for="due-date">Due Date</label>
+                    <input type="date" name="due-date" id="due-date" required>
+                    
+                    <label for="to-do">To-do</label><br>
+                    <textarea name="toDos" id="to-do" placeholder="Enter each item in a new line"></textarea>
+                    <label for="note">Description</label>
+                    <input type="text" name="note" class="note" id="note">
+                    <input type="submit" id="submit-form"></input>
+                </form>
+                    
+            </div>
+        </div> 
+    </main>
+</body>
+</html>
